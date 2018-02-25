@@ -8,13 +8,16 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:panelGrid columns="3" cellpadding="5">
-                <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo" />
-                <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
-                <p:outputPanel id="photo">
-                    <h:graphicImage value="images?key=#{photoCamView.filename}" rendered="#{not empty photoCamView.filename}"/>
-                </p:outputPanel>
-            </h:panelGrid>
+            <h:outputLabel for="username" value="Username" />
+            <h:inputText id="username" value="#{loginUser.userName}" required="true" />
+            <h:message for="username" />
+            <br />
+            <h:outputLabel for="password" value="Password" />
+            <h:inputSecret id="password" value="#{loginUser.password}" required="true" />
+            <h:message for="password" />
+            <br />
+            <h:commandButton value="Login" action="#{loginUser.login}" />
+            <h:messages globalOnly="true" />
         </h:form>
     </h:body>
 </html>
